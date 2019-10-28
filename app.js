@@ -19,7 +19,7 @@ app.use(express.json())
 
 app.use('/', homeRoute)
 
-const port = process.env.port || 3000
+const port = process.env.port || 3001
 app.listen(port, () => {
     console.log(`Port ${port} connected...`)
 })
