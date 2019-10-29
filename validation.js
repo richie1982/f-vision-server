@@ -21,7 +21,8 @@ const  moreInfoValidation = (data) => {
 }
 const commentValidation = (data) => {
     const schema = {
-        text: Joi.string().max(200).required()
+        id: Joi.string(),
+        comment: Joi.string().max(200).required()
     }
     return Joi.validate(data, schema)
 }

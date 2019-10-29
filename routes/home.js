@@ -42,9 +42,19 @@ router.patch('/', async (req, res) => {
     res.send(moreInfo)
 })
 
+router.patch('/comment', async(req, res) => {
+    const { error } = commentValidation(req.body)
+    if (error) return res.status(404).send(error.details[0].message)
 
-// const comment = {
-//     comment: req.body.comment,
-// }
+    const comment = await User.findByIdAndUpdate({_id: req.body.id},
+            {
+                comment: req.body.comment
+            }
+        )
+    if (!comment) res.status(404).send("Error")
+
+    res.send(comment)
+})
+
 
 module.exports = router
